@@ -1,5 +1,5 @@
 {
-  "name": "headless-template",
+  "name": "catalystsmp-store",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -19,16 +19,16 @@
     "@vueuse/integrations": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "canvas-confetti": "^1.9.2",
+    "defu": "^6.1.4",
     "focus-trap": "^7.5.4",
+    "ipx": "^2.1.1",
     "nuxt": "^3.11.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "defu": "^6.1.4"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@nuxtjs/google-fonts": "^3.2.0",
     "@types/canvas-confetti": "^1.6.4",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
@@ -37,5 +37,6 @@
     "eslint-plugin-prettier": "^5.0.1",
     "nuxt-svgo": "^4.0.0",
     "sass": "^1.72.0"
-  }
+  },
+  "description": "Official Catalyst SMP webstore - headless Tebex storefront (Nuxt 3)"
 }

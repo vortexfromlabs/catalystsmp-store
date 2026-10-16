@@ -1,6 +1,6 @@
 <template>
     <Modal v-model="open" @hidden="router.push('/')">
-        <div v-if="pkg">
+        <div v-if="pkg" class="package-form">
             <h5>{{ pkg.name }}</h5>
 
             <div v-for="variable in pkg.variables" :key="variable.id">
@@ -89,5 +89,19 @@ const submit = async (packageId: number, data: PackageVariableData) => {
 </script>
 
 <style scoped lang="scss">
-@use "~/assets/styles/settings" as *;
+.package-form {
+    display: grid;
+    gap: 10px;
+    padding-block: 6px;
+}
+
+.package-form h5 {
+    margin: 0 0 6px;
+    color: var(--cat-text-high);
+}
+
+.package-form .btn {
+    justify-self: start;
+    margin-top: 8px;
+}
 </style>

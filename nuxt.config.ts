@@ -4,18 +4,12 @@ export default defineNuxtConfig({
     },
     devtools: { enabled: true },
     modules: [
-        "@nuxtjs/google-fonts",
         "nuxt-svgo",
         "@vueuse/nuxt",
         "@pinia/nuxt",
         "@nuxtjs/i18n",
         "@nuxt/image",
     ],
-    googleFonts: {
-        families: {
-            Lato: true,
-        },
-    },
     // Runtime config is overridden by .env variables
     runtimeConfig: {
         // NOTE: This should never be moved to public or app config as it is private

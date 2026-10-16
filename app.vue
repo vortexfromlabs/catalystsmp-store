@@ -1,6 +1,8 @@
 <template>
     <Head>
-        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="theme-color" content="#0a090e" />
     </Head>
 
     <NuxtLayout>

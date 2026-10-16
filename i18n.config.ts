@@ -19,12 +19,28 @@ export default defineI18nConfig(() => ({
     },
     messages: {
         "en-US": {
-            store_name: "Example Store",
-            play: "example.play.com",
+            store_name: "Catalyst SMP",
+            play: "play.catalystsmp.net",
             index: {
                 hero: {
-                    title: "Hero Banner",
-                    subtitle: "CHECK OUT THE LATEST OFFERS",
+                    title: "Store",
+                    subtitle: "Upgrade your experience on {storeName}",
+                },
+                category: {
+                    hintMemberships:
+                        "Memberships are billed monthly in USD and apply the moment you rejoin.",
+                    hintCurrency:
+                        "Shard packs are one-time and land on your balance instantly.",
+                },
+                dev: {
+                    sampleNote:
+                        "Showing sample packages — point nuxt.config.ts at your Tebex category to go live.",
+                },
+                empty: {
+                    title: "The store is being restocked",
+                    description:
+                        "No packages are live yet. Publish one in your Tebex category, then refresh.",
+                    cta: "Retry live data",
                 },
             },
             buttons: {
@@ -36,9 +52,7 @@ export default defineI18nConfig(() => ({
                 login: "Login",
                 logout: "Log Out",
                 copied: "Copied!",
-                home: "Home",
-                menu: "Menu",
-                go_to_top: "Go to top",
+                copy_ip: "Click to copy",
             },
             auth: {
                 login: {
@@ -65,15 +79,14 @@ export default defineI18nConfig(() => ({
                     "You are not allowed to purchase this package",
             },
             footer: {
-                join_our_discord: "Join our Discord",
-                copyright: "© 2024 {storeName}. All rights reserved.",
-                tebex: {
-                    description:
-                        "This website and its checkout process is operated by our online reseller & Merchant of Record, Tebex Limited, who also handles order-related inquiries and refunds.",
-                    impressum: "Impressum",
-                    privacy_policy: "Privacy Policy",
-                    tos: "Terms of Service",
-                },
+                copyright: "© {year} {storeName}. All rights reserved.",
+                disclaimer: "Not associated with Mojang or Microsoft.",
+                legalTitle: "Store policies",
+                poweredBy: "Powered by {tebex}",
+                blurb: "This website and its checkout process is owned & operated by Tebex Limited, who handle product fulfillment, billing support and refunds.",
+                imprint: "Impressum",
+                terms: "Terms & Conditions",
+                privacy: "Privacy Policy",
             },
             messages: {
                 success: {
@@ -81,16 +94,12 @@ export default defineI18nConfig(() => ({
                     removed_from_cart: "{name} Removed from cart",
                 },
             },
-            sidebar: {
-                menu: "Menu",
-            },
             titles: {
                 login: "Login",
                 package: "{name}",
             },
             checkout: {
                 completed: {
-                    title: "Thank you for your order",
                     subtitle:
                         "You should receive your items within a few minutes",
                 },
@@ -109,12 +118,28 @@ export default defineI18nConfig(() => ({
             },
         },
         "de-DE": {
-            store_name: "Beispiel Shop",
-            play: "beispiel.shop.de",
+            store_name: "Catalyst SMP",
+            play: "play.catalystsmp.net",
             index: {
                 hero: {
-                    title: "Hero Banner",
-                    subtitle: "SCHAUE DIR DIE NEUESTEN ANGEBOTE AN",
+                    title: "Shop",
+                    subtitle: "Verbessere dein Erlebnis auf {storeName}",
+                },
+                category: {
+                    hintMemberships:
+                        "Memberships werden monatlich in USD abgerechnet und sofort im Spiel aktiv.",
+                    hintCurrency:
+                        "Shard-Packs sind einmalig und liegen direkt auf deinem Konto.",
+                },
+                dev: {
+                    sampleNote:
+                        "Beispiel-Pakete aktiv – in nuxt.config.ts die Tebex-Kategorie eintragen, um live zu gehen.",
+                },
+                empty: {
+                    title: "Der Shop wird gerade bestückt",
+                    description:
+                        "Noch sind keine Pakete live. Veröffentliche eines in deiner Tebex-Kategorie und lade neu.",
+                    cta: "Live-Daten erneut laden",
                 },
             },
             buttons: {
@@ -126,9 +151,7 @@ export default defineI18nConfig(() => ({
                 login: "Anmelden",
                 logout: "Abmelden",
                 copied: "Kopiert!",
-                home: "Startseite",
-                menu: "Menü",
-                go_to_top: "Nach oben",
+                copy_ip: "Klicken zum Kopieren",
             },
             auth: {
                 login: {
@@ -151,19 +174,17 @@ export default defineI18nConfig(() => ({
             },
             error: {
                 page_not_found: "Seite nicht gefunden",
-                cannot_add_package:
-                    "Du kannst dieses Paket nicht kaufen",
+                cannot_add_package: "Du kannst dieses Paket nicht kaufen",
             },
             footer: {
-                join_our_discord: "Tritt unserem Discord bei",
-                copyright: "© 2024 {storeName}. Alle Rechte vorbehalten.",
-                tebex: {
-                    description:
-                        "Diese Website und ihr Checkout-Prozess werden von unserem Online-Reseller & Händler, Tebex Limited, betrieben, der auch für bestellbezogene Anfragen und Rückerstattungen zuständig ist.",
-                    impressum: "Impressum",
-                    privacy_policy: "Datenschutzerklärung",
-                    tos: "Nutzungsbedingungen",
-                },
+                copyright: "© {year} {storeName}. Alle Rechte vorbehalten.",
+                disclaimer: "Nicht verbunden mit Mojang oder Microsoft.",
+                legalTitle: "Shop-Richtlinien",
+                poweredBy: "Betrieben von {tebex}",
+                blurb: "Diese Website und ihr Checkout-Prozess werden von Tebex Limited betrieben. Tebex kümmert sich um Zustellung, Rechnungsunterstützung und Rückerstattungen.",
+                imprint: "Impressum",
+                terms: "AGB",
+                privacy: "Datenschutzerklärung",
             },
             messages: {
                 success: {
@@ -171,16 +192,12 @@ export default defineI18nConfig(() => ({
                     removed_from_cart: "{name} aus dem Warenkorb entfernt",
                 },
             },
-            sidebar: {
-                menu: "Menü",
-            },
             titles: {
                 login: "Anmelden",
                 package: "{name}",
             },
             checkout: {
                 completed: {
-                    title: "Vielen Dank für deine Bestellung",
                     subtitle:
                         "Du solltest deine Artikel in wenigen Minuten erhalten",
                 },
@@ -197,6 +214,6 @@ export default defineI18nConfig(() => ({
             category: {
                 image_alt: "Ein Bild für die Kategorie {name}",
             },
-        }
+        },
     },
 }));

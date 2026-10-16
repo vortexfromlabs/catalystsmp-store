@@ -1,143 +1,107 @@
-# Tebex - Headless Store Template
+# Catalyst SMP Store
 
-An integration of the Tebex Headless API built upon Nuxt, Vue 3 & Typescript for kickstarting your next store design.
+The official webstore for **Catalyst SMP** ([play.catalystsmp.net](https://play.catalystsmp.net)) — a
+headless Tebex storefront built with Nuxt 3, Vue 3, Pinia and SCSS.
 
-## Demo
+The look is a blend of authentic old-school Minecraft (blocky `Minecraftia` type, sharp edges) and a
+modern premium dark UI (near-black page, soft crystal glow). One centred column: hero, the packages,
+footer — nothing else.
 
-You can view a live demo of this repo by visiting https://tebex-headless-template.pages.dev.
+## 🎨 Theme
 
-## ⚡ Setup
-Make sure to install the dependencies:
+All brand tokens live in two places:
+
+| File                                    | Purpose                                                                                                                           |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `assets/styles/theme.scss`              | SCSS variable overrides handed to the whole template (palette, fonts, component settings).                                        |
+| `assets/styles/elements/_catalyst.scss` | CSS custom properties (`--cat-*`), the `@font-face` for Minecraftia, base body/scrollbar styling and small component refinements. |
+
+Palette:
+
+| Token           | Value     | Used for                               |
+| --------------- | --------- | -------------------------------------- |
+| `--cat-bg`      | `#0a090e` | Page background (deep obsidian)        |
+| `--cat-surface` | `#14121b` | Cards, sidebars, modals (slate-purple) |
+| `--cat-primary` | `#a154f2` | Neon crystal accent + glow             |
+| `--cat-cyan`    | `#00ffff` | Secondary highlight, hover states      |
+
+Typography: headings, store titles, section names, price tags and buttons use `Minecraftia`
+(`--cat-font-heading`); body copy uses the system UI stack (`--cat-font-body`). The font is
+self-hosted from `public/fonts/Minecraftia.ttf`, so there is no third-party font request. Minecraftia
+needs a commercial licence for commercial use — see `public/fonts/README.md`.
+
+Checkout itself is themed through `tebexJsConfig` in `app.config.ts` (Tebex.js picks up the same
+purple/cyan pair).
+
+## 🧩 Store layout
+
+```
+pages/index.vue              hero → one section per Tebex category → footer (owns the <NuxtPage /> outlet for modal routes)
+components/store/
+  StoreHero.vue              logo, "Store" heading, subtitle and the click-to-copy server IP
+  MembershipCard.vue         rank card: optional tag strip, "Catalyst+++" name, included-shard panel,
+                             Homes / Auction slots / Order slots rows, price chip as the buy button
+  ShardCard.vue              currency card: bonus badge, art, struck-through base amount, price chip
+  StoreFooter.vue            centred IP, Mojang disclaimer, legal triggers, Tebex credit
+  LegalModals.vue            modal host for the five legal/support pages
+utils/store-presentation.ts  derives tags, perks, billing labels and Shard bonus % from the Tebex payload
+utils/legal-content.ts       Store Privacy, Catalyst Privacy, Support, Terms, Refunds
+```
+
+The page is deliberately bare — no nav bar, no hero buttons, no "how it works" section. The only
+chrome that appears is the cart/account control in the top-right corner, and only once something is in
+the basket or somebody is signed in.
+
+The presentation layer never mutates the Tebex payload: it reads package names, `type` and
+descriptions to decide whether a package is a monthly membership (Homes / Auction slots / Order slots
+breakdown, `USD / month`) or a one-time Shard pack (`+10%` … `+40%` bonus badges). Write perks on the
+Tebex dashboard as `Homes: 9` lines — or plain sentences like `40 homes` — and the card picks both up,
+so re-tuning a tier needs no code change.
+
+## 🔌 Tebex integration (unchanged)
+
+- `@tebexio` headless endpoints stay in `services/*` and Pinia stores (`basket`, `auth`, `category`).
+- Every "Add to cart" button calls `useBasketStore().addPackageToBasket()`, which keeps the existing
+  behaviour: redirects to the Minecraft username popup (`/login`) when signed out, opens the variable
+  flow (`/package/:id/variables`) when the package needs input, and queues pending actions until login.
+- `components/CartSidebar.vue` launches `window.Tebex.checkout` with the basket ident, so payment,
+  Java authentication and the `payment_complete` confetti hook all behave exactly as before.
+- Do not remove `<NuxtPage />` from `pages/index.vue`: `/login`, `/package/:id`, `/package/:id/gift`
+  and `/package/:id/variables` are child routes rendered as overlays on top of the store.
+
+## ⚙️ Setup
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+cp .env.example .env   # then fill in the values below
+npm run dev            # http://localhost:3000
 ```
 
-Create a .env file
+Getting your API keys: [creator.tebex.io → Developers → API keys](https://creator.tebex.io/developers/api-keys).
 
 ```bash
-cp .env.example .env # Fill out all the necessary fields
+NUXT_PUBLIC_API_PUBLIC_KEY=<public token>   # used client side
+NUXT_API_PRIVATE_KEY=<private key>          # server only, never exposed
 ```
 
-## 🔑 Getting your API key
-Head to the [API keys](https://creator.tebex.io/developers/api-keys) page within your creator panel. You'll find a private key and a public token.
+Store name, Discord invite, server IP, confetti and checkout theming are configured in
+`app.config.ts`.
 
-Inside your **.env** file, do the following:
-1. Set the `NUXT_PUBLIC_API_PUBLIC_KEY` key to your public token.
-2. Set the `NUXT_API_PRIVATE_KEY` key to your private key.
+> Offline development: when the Headless API cannot be reached and the app runs in dev mode,
+> `pages/index.vue` falls back to `utils/demo-catalogue.ts` so the design can still be reviewed. That
+> branch is gated on `import.meta.dev` and never renders in a production build.
 
-## ⚙️ Configuring
-Update config in `app.config.ts` with your custom configuration options for your webstore.
+## 🚀 Deploy
 
-## 🎨 Changing the colour scheme 
-There is a default theme for the webstore which is configurable.
+Any Node or serverless host works (`npm run build` → `node .output/server/index.mjs`). For Cloudflare
+Pages, set the two env vars above in the build configuration — `.env` is not read at runtime.
 
-Within the `assets/styles/theme.scss` file you can specify variable overrides.
+## 🔗 Useful links
 
-```scss
-// More information can be found here https://sass-lang.com/documentation/at-rules/use/#configuration
-@forward "./settings" with (
-  // Base settings
-  $pure-black: #000000,
-  $pure-white: #ffffff,
+- [Headless API documentation](https://docs.tebex.io/developers/headless-api/overview)
+- [Tebex.js documentation](https://docs.tebex.io/developers/tebex.js)
+- [Nuxt 3](https://nuxt.com/docs) · [Vue 3](https://vuejs.org/guide/introduction.html) · [Pinia](https://pinia.vuejs.org)
 
-  // Background
-  $background-100: #ffffff,
-  $background-200: #f2f2f2,
+---
 
-  // Colour pallette
-  $c-100: #e5e5e5,
-  $c-200: #d1cfc6,
-  $c-300: #cccccc,
-  $c-400: #b2b2b2,
-  $c-500: #7f7f7f,
-  $c-600: #666666,
-  $c-700: #4d4d4d,
-  $c-800: #333333,
-  $c-900: #1a1a1a,
-
-  $text-high-emphasis-color: #000000,
-  $text-base-color: #000000,
-  $modal-close-color: #000000
-);
-```
-
-## 🚀 Deploying 
-Once you're ready to deploy your new store we recommend using a serverless platform such as [Cloudflare Pages](https://pages.cloudflare.com/). They have documentation for [deploying a Nuxt site](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/) which only takes a few minutes to get setup.
-
-As stated in the nuxt documentation the .env file will not be read by the server when deployed. You will need to specifiy these for the server at runtime.
-
-- https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables
-- https://nuxt.com/docs/guide/directory-structure/env#production-preview
-
-## 👩‍💻 Development
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Building for Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-#### Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-## 🔗 Useful Links
-
-- [Headless API Documentation](https://docs.tebex.io/developers/headless-api/overview)
-- [Tebex.js Documentation](https://docs.tebex.io/developers/tebex.js)
-- [Nuxt](https://nuxt.com/docs)
-- [Vue 3](https://vuejs.org/guide/introduction.html)
-
-## 🙋‍♂️ Support
-For issues relating to this template (https://github.com/tebexio/Headless-Template) please contact [support@tebex.io.](mailto:support@tebex.io)
+Catalyst SMP is not affiliated with or endorsed by Mojang Studios or Microsoft.

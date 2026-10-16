@@ -1,41 +1,151 @@
 // You can override the default settings using the SCSS with on the @forward rule for "./settings".
 // More information can be found here https://sass-lang.com/documentation/at-rules/use/#configuration
-
-//  Example of overriding the default settings:
 //
+// ─── Catalyst SMP theme ────────────────────────────────────────────────────
+// Deep obsidian backgrounds, dark slate-purple surfaces, neon crystal purple
+// as the primary accent and vibrant cyan as the secondary highlight.
+// Headings use the authentic Minecraft block font (Minecraftia), body copy uses
+// the system UI stack.
 
 @forward "./settings" with (
-//   // Base settings
-//   $pure-black: #000000,
-//   $pure-white: #ffffff,
+  // Base
+  $pure-black: #0a090e,
+  $pure-white: #f5f3fa,
 
-//   // Background
-//   $background-100: #ffffff,
-//   $background-200: #f2f2f2,
+  // Background
+  $background-100: #0a090e,
+  $background-200: #14121b,
 
-//   // Colour pallette
-//   $c-100: #e5e5e5,
-//   $c-200: #d1cfc6,
-//   $c-300: #cccccc,
-//   $c-400: #b2b2b2,
-//   $c-500: #7f7f7f,
-//   $c-600: #666666,
-//   $c-700: #4d4d4d,
-//   $c-800: #333333,
-//   $c-900: #1a1a1a,
+  // Colour palette
+  $c-100: #14121b,
+  $c-200: #1c1a27,
+  $c-300: #2a2738,
+  $c-400: #3a3550,
+  $c-500: #6f6883,
+  $c-600: #8b8499,
+  $c-700: #a49db6,
+  $c-800: #c9c4d6,
+  $c-900: #e7e3f1,
 
-//   $primary: #D81B60,
+  // Accents
+  $primary: #a154f2,
+  $primary-dark: #8a3fe0,
+  $secondary: #00ffff,
+  $secondary-dark: #00e0e0,
+  $tertiary: #1c1a27,
+  $tertiary-dark: #14121b,
+  $success: #24c96a,
+  $success-dark: #1cae58,
+  $links: #c9a6ff,
+  $links-dark: #a154f2,
 
-//   $text-high-emphasis-color: #000000,
-//   $text-base-color: #000000,
+  // Text
+  $text-base-color: #d8d3e4,
+  $text-high-emphasis-color: #f5f3fa,
+  $text-medium-emphasis-color: #a49db6,
 
-//   // Components
-//   $modal-close-color: #000000,
-//   $loader-color: rgba(0, 0, 0, 0.6),
+  // Typography — authentic Minecraft block font for headings
+  $font-family:
+    (
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      sans-serif
+    ),
+  $heading-font-family: ("Minecraftia", "Press Start 2P", monospace),
+  // Minecraftia is a bitmap face with a single weight, so headings drop the
+  // faux-bold and the oversized template line-heights to keep rows compact.
+  $typography:
+    (
+      "h1": (
+        "size": 44px,
+        "weight": 400,
+        "line-height": 1.25,
+        "letter-spacing": 0.02em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      ),
+      "h2": (
+        "size": 34px,
+        "weight": 400,
+        "line-height": 1.3,
+        "letter-spacing": 0.02em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      ),
+      "h3": (
+        "size": 26px,
+        "weight": 400,
+        "line-height": 1.35,
+        "letter-spacing": 0.02em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      ),
+      "h4": (
+        "size": 20px,
+        "weight": 400,
+        "line-height": 1.4,
+        "letter-spacing": 0.03em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      ),
+      "h5": (
+        "size": 17px,
+        "weight": 400,
+        "line-height": 1.45,
+        "letter-spacing": 0.03em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      ),
+      "h6": (
+        "size": 14px,
+        "weight": 400,
+        "line-height": 1.5,
+        "letter-spacing": 0.04em,
+        "font-family": (
+          "Minecraftia",
+          "Press Start 2P",
+          monospace,
+        ),
+        "text-transform": none,
+      )
+    ),
 
-   // Catalyst SMP Theme Config overrides
-   $pure-black: #0a090e,
-   $background-100: #0a090e,
-   $background-200: #14121b,
-   $primary: #a154f2,
+  // Borders
+  $border-radius-base: 4px,
+  $border-bottom-color: rgba(161, 84, 242, 0.16),
+  // Components
+  $modal-bg: #14121b,
+  $modal-close-color: #f5f3fa,
+  $loader-color: #a154f2,
+  $package-card-bg: #14121b,
+  $package-card-image-bg: #0f0d15,
+  $cart-item-bg: #1c1a27,
+  $cart-item-image-bg: #0f0d15,
+  $footer-bg: #0a090e,
+  $footer-tebex-bg: #0a090e,
+  $header-sticky-bg: rgba(10, 9, 14, 0.85)
 );

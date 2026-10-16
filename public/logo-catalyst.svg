@@ -1,0 +1,52 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Catalyst SMP logo">
+  <defs>
+    <linearGradient id="catCubeTop" x1="20" y1="18" x2="140" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2c2340" />
+      <stop offset="1" stop-color="#17122a" />
+    </linearGradient>
+    <linearGradient id="catCrystalA" x1="56" y1="44" x2="104" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0e6ff" />
+      <stop offset=".45" stop-color="#b47bff" />
+      <stop offset="1" stop-color="#7d3fe0" />
+    </linearGradient>
+    <linearGradient id="catCrystalB" x1="80" y1="50" x2="80" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8f5cf5" />
+      <stop offset="1" stop-color="#43206f" />
+    </linearGradient>
+    <linearGradient id="catCrystalC" x1="104" y1="60" x2="70" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7ffcff" />
+      <stop offset="1" stop-color="#2fb7d6" />
+    </linearGradient>
+  </defs>
+
+  <!-- obsidian block -->
+  <path d="M80 16 142 48v64L80 144 18 112V48L80 16Z" fill="#0f0c17" />
+  <path d="M80 16 142 48 80 80 18 48 80 16Z" fill="url(#catCubeTop)" />
+  <path d="M18 48 80 80v64L18 112V48Z" fill="#151021" />
+  <path d="M142 48v64L80 144V80l62-32Z" fill="#1d1729" />
+  <path
+    d="M80 16 142 48v64L80 144 18 112V48L80 16ZM80 80 18 48M80 80l62-32M80 80v64"
+    stroke="#a154f2"
+    stroke-opacity=".5"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+
+  <!-- neon crystal -->
+  <path d="M80 34 108 68 80 126 52 68 80 34Z" fill="url(#catCrystalB)" />
+  <path d="M80 34 52 68l28 58V34Z" fill="url(#catCrystalA)" />
+  <path d="M80 34l28 34-28 58V34Z" fill="url(#catCrystalC)" fill-opacity=".85" />
+  <path d="M80 34 108 68 80 74 52 68 80 34Z" fill="#f4ecff" fill-opacity=".9" />
+  <path d="M80 126 108 68l-28 6v52Z" fill="#2b1250" fill-opacity=".55" />
+  <path
+    d="M80 34 108 68 80 126 52 68 80 34ZM52 68h56M80 34v92"
+    stroke="#e9dbff"
+    stroke-opacity=".55"
+    stroke-width="1.6"
+    stroke-linejoin="round"
+  />
+
+  <!-- sparks -->
+  <path d="M120 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z" fill="#7ffcff" fill-opacity=".85" />
+  <path d="M36 96l2.2 5 5 2.2-5 2.2-2.2 5-2.2-5-5-2.2 5-2.2 2.2-5Z" fill="#c9a6ff" fill-opacity=".8" />
+</svg>
