@@ -4,7 +4,7 @@
 //  Example of overriding the default settings:
 //
 
-// @forward "./settings" with (
+@forward "./settings" with (
 //   // Base settings
 //   $pure-black: #000000,
 //   $pure-white: #ffffff,
@@ -32,6 +32,10 @@
 //   // Components
 //   $modal-close-color: #000000,
 //   $loader-color: rgba(0, 0, 0, 0.6),
-// );
 
-@forward "./settings";
+   // Catalyst SMP Theme Config overrides
+   $pure-black: #0a090e,
+   $background-100: #0a090e,
+   $background-200: #14121b,
+   $primary: #a154f2,
+);

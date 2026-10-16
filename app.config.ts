@@ -2,21 +2,21 @@
 // See index.d.ts for the full list of available options
 export default defineAppConfig({
     // Shows in the <title> tag before the name of the page
-    titlePrefix: "Example Store",
+    titlePrefix: "Catalyst SMP Store",
     // The name of your store
-    storeName: "Example Store",
+    storeName: "Catalyst SMP",
     // Require the user to login before they add items?
     auth: true,
     // Use external auth methods, e.g. CFX, Steam (Set to false for minecraft stores)
-    authExternal: true,
+    authExternal: false,
     // The unique ID of the store
     storeId: 45295,
     // A link to your main site (optional)
-    mainSiteUrl: "https://example.com",
+    mainSiteUrl: "https://catalystsmp.net",
     // A discord invite url (optional)
-    discordUrl: "https://discord.gg/example",
+    discordUrl: "https://discord.gg/catalystsmp",
     // A IP of your server which to display (optional)
-    serverIp: "play.example.com",
+    serverIp: "play.catalystsmp.net",
     // Reveal the sidebar when an item is added to the cart?
     showCartOnAdd: true,
     // Show confetti after checkout?
@@ -29,11 +29,11 @@ export default defineAppConfig({
         colors: [
             {
                 name: "primary",
-                color: "#EB5526",
+                color: "#a154f2",
             },
             {
                 name: "secondary",
-                color: "#F5F5F5",
+                color: "#00ffff",
             },
         ],
     },
